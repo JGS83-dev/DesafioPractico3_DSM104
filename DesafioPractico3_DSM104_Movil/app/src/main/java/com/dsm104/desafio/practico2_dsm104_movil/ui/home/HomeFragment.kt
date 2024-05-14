@@ -82,7 +82,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun navegarADetalles(recursos: Recursos) {
-        findNavController().navigate(R.id.navigation_dashboard)
+        val bundle = Bundle()
+        bundle.putString("id",recursos.id)
+        bundle.putString("titulo",recursos.titulo)
+        bundle.putString("tipo",recursos.tipo)
+        bundle.putString("descripcion",recursos.descripcion)
+        bundle.putString("enlace",recursos.enlace)
+        bundle.putString("imagen",recursos.imagen)
+        findNavController().navigate(R.id.navigation_dashboard,bundle)
     }
 
     override fun onDestroyView() {

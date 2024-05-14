@@ -1,6 +1,8 @@
 package com.dsm104.desafio.practico2_dsm104_movil.clases
 
-class Recursos {
+import java.io.Serializable
+
+class Recursos: Serializable {
     var titulo: String = ""
     var descripcion: String = ""
     var tipo: String = ""

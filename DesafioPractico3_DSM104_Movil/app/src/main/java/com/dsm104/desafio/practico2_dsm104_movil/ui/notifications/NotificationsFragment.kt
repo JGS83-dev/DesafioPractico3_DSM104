@@ -32,13 +32,6 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        var retrofitAPI: RecursosApiService = retrofit.create(RecursosApiService::class.java)
-
 
         return root
     }
