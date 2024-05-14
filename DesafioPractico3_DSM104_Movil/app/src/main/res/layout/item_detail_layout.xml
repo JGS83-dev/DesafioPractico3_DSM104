@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    style="@style/EstiloContenedorPrincipal"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
@@ -15,6 +16,7 @@
 
             <TextView
                 android:layout_width="match_parent"
+                style="@style/EstiloTitulos"
                 android:layout_height="wrap_content"
                 android:gravity="left"/>
 
@@ -30,7 +32,8 @@
 
 
             <TextView
-                android:text="INFORMACION:"
+                android:text="@string/titulo_informacion"
+                style="@style/EstiloSubTitulosContenido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"/>
@@ -42,134 +45,119 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="Nombre de materia: "
+                    android:text="@string/lbl_id"
+                    style="@style/EstiloLabels"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_weight="3"/>
 
                 <TextView
-                    android:id="@+id/txtHoraEntrada"
-                    android:text=""
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="ID: "
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="3"/>
-
-                <TextView
-                    android:id="@+id/txtHoraEntradaReal"
-                    android:text=""
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="Descripcion: "
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="3"/>
-
-                <TextView
-                    android:id="@+id/txtHoraFin"
-                    android:text=""
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="Enlace de curso: "
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="3"/>
-
-                <TextView
-                    android:id="@+id/txtHoraFinReal"
-                    android:text=""
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="Tipo: "
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="3"/>
-
-                <TextView
-                    android:id="@+id/txtNombreLugar"
-                    android:text=""
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_weight="3"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:text="UV: "
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="3"/>
-
-                <TextView
-                    android:id="@+id/txtUbicacion"
-                    android:text=""
+                    android:id="@+id/txtID"
                     style="@style/EstiloContenido"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:layout_weight="3"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:text="@string/lbl_nombre"
+                    style="@style/EstiloLabels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:id="@+id/txtNombre"
+                    style="@style/EstiloContenido"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="@string/lbl_descripcion"
+                    style="@style/EstiloLabels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:id="@+id/txtDescripcion"
+                    style="@style/EstiloContenido"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="@string/lbl_enlace"
+                    style="@style/EstiloLabels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:id="@+id/txtEnlace"
+                    style="@style/EstiloContenido"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:text="@string/lbl_tipo"
+                    style="@style/EstiloLabels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:id="@+id/txtTipo"
+                    style="@style/EstiloContenido"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+            </LinearLayout>
     </ScrollView>
 
 
