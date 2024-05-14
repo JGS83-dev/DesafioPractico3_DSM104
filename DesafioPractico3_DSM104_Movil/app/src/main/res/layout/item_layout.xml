@@ -14,7 +14,8 @@ xmlns:tools="http://schemas.android.com/tools">
     >
     <LinearLayout
         android:layout_width="match_parent"
-        style="@style/EstiloContenedorPrincipal"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -36,15 +37,16 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="left|center"
+                android:gravity="left"
                 style="@style/EstiloLabels"
                 android:text="@string/lbl_descripcion" />
             <TextView
                 android:id="@+id/lblDescripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left|center"
+                style="@style/EstiloContenido"
+                android:layout_weight="3"
+                android:gravity="left"
                 android:text="" />
 
         </LinearLayout>

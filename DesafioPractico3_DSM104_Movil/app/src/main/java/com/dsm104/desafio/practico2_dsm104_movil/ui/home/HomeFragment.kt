@@ -1,13 +1,29 @@
 package com.dsm104.desafio.practico2_dsm104_movil.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.dsm104.desafio.practico2_dsm104_movil.R
+import com.dsm104.desafio.practico2_dsm104_movil.clases.Recursos
+import com.dsm104.desafio.practico2_dsm104_movil.clases.adapters.RecursosAdapter
+import com.dsm104.desafio.practico2_dsm104_movil.clases.body.RecursosResponse
+import com.dsm104.desafio.practico2_dsm104_movil.clases.service.RecursosApiService
 import com.dsm104.desafio.practico2_dsm104_movil.databinding.FragmentHomeBinding
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeFragment : Fragment() {
 
@@ -16,6 +32,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val BASE_URL = "https://6640fe24a7500fcf1a9f452f.mockapi.io/api/v1/recursos/"
+    private var listaRecursos = ArrayList<Recursos>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,11 +46,43 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        var retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var retrofitAPI: RecursosApiService = retrofit.create(RecursosApiService::class.java)
+
+        retrofitAPI.callResources().enqueue(object : Callback<List<RecursosResponse>> {
+            override fun onResponse(p0: Call<List<RecursosResponse>>, response: Response<List<RecursosResponse>>) {
+                response.body()!!.forEach{
+                    var recurso = Recursos(it.titulo,it.descripcion,it.tipo,it.enlace,it.imagen,it.id)
+                    listaRecursos.add(recurso)
+                }
+
+                val recyclerViewItems: RecyclerView = binding.recyclerItems
+
+                recyclerViewItems.layoutManager = LinearLayoutManager(context)
+
+                val recursosAdapter = RecursosAdapter(requireContext(),listaRecursos,object : RecursosAdapter.RecursosListener {
+                    override fun onItemClick(recursos: Recursos) {
+                        navegarADetalles(recursos)
+                    }
+                })
+
+                recyclerViewItems.adapter = recursosAdapter
+            }
+
+            override fun onFailure(p0: Call<List<RecursosResponse>>, p1: Throwable) {
+                Log.i("callResources","Error al obtener recursos en linea de API Service: ${p1.message}")
+            }
+        })
+
         return root
+    }
+
+    private fun navegarADetalles(recursos: Recursos) {
+        findNavController().navigate(R.id.navigation_dashboard)
     }
 
     override fun onDestroyView() {

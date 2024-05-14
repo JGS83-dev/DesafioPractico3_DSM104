@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.dsm104.desafio.practico2_dsm104_movil.clases.service.RecursosApiService
 import com.dsm104.desafio.practico2_dsm104_movil.databinding.FragmentNotificationsBinding
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class NotificationsFragment : Fragment() {
 
@@ -16,6 +19,7 @@ class NotificationsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val BASE_URL = "https://6640fe24a7500fcf1a9f452f.mockapi.io/api/v1/recursos/"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,10 +32,14 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        var retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var retrofitAPI: RecursosApiService = retrofit.create(RecursosApiService::class.java)
+
+
         return root
     }
 
